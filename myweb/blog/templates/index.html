@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block body %}
+{% for post in post_list %}
+<article class="post post-1">
+	<header class="entry-header">
+		<h1 class="entry-title">
+			<a href="{% url 'post'  forloop.counter %}">{{ post.title }}</a>
+		</h1>
+		<div class="entry-meta">
+			<span class="post-category"><a href="#">{{ post.category.name }}</a></span>
+
+			<span class="post-date"><a href="#"><time class="entry-date" datetime="{{ post.create_time }}">{{ post.create_time.year }}年{{ post.create_time.month }}月{{ post.create_time.day }}日</time></a></span>
+
+			<span class="post-author"><a href="#">{{ post.author }}</a></span>
+
+			<span class="comments-link"><a href="#">评论数:0</a></span>
+		</div>
+	</header>
+	<div class="entry-content clearfix">
+		<p>{{ post.excerpt }}</p>
+		<div class="read-more cl-effect-14">
+			<a href="{% url 'post'  forloop.counter  %}" class="more-link">查看更多<span class="meta-nav">→</span></a>
+		</div>
+	</div>
+</article>
+                        {% endfor %}
+{% endblock %}

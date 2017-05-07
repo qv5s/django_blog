@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1 class="entry-title">{{ post.title }}</h1>
+  <div class="entry-meta">
+    <span >
+        <time datetime="{{ post.create_time }}">创建时间:{{ post.create_time }}    </time>
+    </span>
+
+    <span >作者:{{ post.author }}</span><br>
+      {% for tag in post.tags.all %}
+      <span>{{ tag.name }}</span>
+      {% endfor %}
+  </div>
+</header>
+<div class="entry-content clearfix">
+  {{ post.body|safe }}
+</div>
+<section class="comment-area">
+  <!-- UY BEGIN -->
+  <div id="uyan_frame"></div>
+  <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2132104"></script>
+  <!-- UY END -->
+</section>
+{% endblock %}
